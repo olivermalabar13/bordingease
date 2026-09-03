@@ -62,14 +62,17 @@ const markupGenerator = (listing) => {
 
 const results = () => {
   if (newListings.length === 0) {
-    resultsList.innerHTML = `<li class="empty">
-              No listings match that search. Try a barangay name.
-            </li>`;
+    resultsList.innerHTML = `
+      <li class="empty">
+        No listings match that search. Try a barangay name.
+      </li>`;
 
     searchCount.textContent = "0 listings found";
+    return;
   }
 
   resultsList.innerHTML = newListings.map(markupGenerator).join("");
+  searchCount.textContent = `${newListings.length} listing${newListings.length === 1 ? "" : "s"} found`;
 };
 
 results();
